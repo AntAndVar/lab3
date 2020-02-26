@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         mp = new MPro();
 
         this.txttospeech = new TextToSpeech(this,this);
-        // motion sensor register listener for onSensorChanged()
+
         motionManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         motion = motionManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         motionManager.registerListener(this, motion, SensorManager.SENSOR_DELAY_FASTEST);
@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             n = n + " \n\n By making this payment monthly for 20 years, the mortgage will be paid in full." +
                     " If you terminate it on the nth anniversary";
 
-            // does calc for 0,1,2,3,4,5
+
             for (int i = 0 ; i <=5 ; i++){
                 n = n + "\n\n" + String.format("%8d",i) + mp.outstandingAfter(i,"%,16.0f");
             }
-            // does calc for 10,15,20
+
             for (int k = 10 ; k <=20 ; k+=5){
                 n = n + "\n\n" + String.format("%8d",k)+ mp.outstandingAfter(k,"%,16.0f");
             }
